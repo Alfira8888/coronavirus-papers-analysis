@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  analysis:
+    build: "."
+    ports:
+    - "8888:8888"
+    environment:
+      JUPYTER_ENABLE_LAB: 1
+    volumes:
+      - "./notebooks:/notebooks"
+  bert_server:
+    build: "./services/bert-server"
+    ports:
+      - "5555:5555"
+      - "5556:5556"
+      - "8080:8080"
+  scibert_server:
+    build: "./services/scibert-server"
+    ports:
+      - "6666:5555"
+      - "6665:5556"
+      - "8081:8080"
