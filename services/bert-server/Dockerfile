@@ -1,12 +1,11 @@
 FROM phenompeople/python:3.6.3
-LABEL maintainer="gaurav.vergiya@phenompeople.com"
-LABEL project="bert-server"
 EXPOSE 8080
 ARG APP_HOME=/opt/deployment
 ARG PROJECT_NAME="bert-server"
 ENV APP_HOME=${APP_HOME} \
     PROJECT_NAME=${PROJECT_NAME} \
-    PROJECT_HOME=${APP_HOME}/${PROJECT_NAME}
+    PROJECT_HOME=${APP_HOME}/${PROJECT_NAME} \
+    NUMBER_OF_PROCS=1
 ADD requirements.txt /
 RUN yum install -y -q unzip && \
 	pip3 install -r requirements.txt && \
